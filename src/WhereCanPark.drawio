@@ -1,0 +1,48 @@
+<mxfile host="app.diagrams.net" modified="2022-01-28T04:17:27.561Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36" etag="UHf_2ssyNl0_D58IssYr" version="16.3.0" type="github" pages="2">
+  <diagram id="23g47a9EaEvK0tUbJpkt" name="Main">
+    <mxGraphModel dx="2062" dy="1122" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="u7ouZlN-CKTeuyxDNOdF-1" value="Postal Code" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="240" width="230" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="u7ouZlN-CKTeuyxDNOdF-6" value="WhereCanPark" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="260" y="80" width="280" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="u7ouZlN-CKTeuyxDNOdF-7" value="Map" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="150" y="520" width="500" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="u7ouZlN-CKTeuyxDNOdF-8" value="Fav" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="610" y="160" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="u7ouZlN-CKTeuyxDNOdF-9" value="Mouse Over - &quot;Your saved favourites&quot;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="660" y="155" width="60" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="u7ouZlN-CKTeuyxDNOdF-11" value="i" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="520" y="260" width="20" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="6ObayH8LxxK3YYAO3bTs" name="Favourites">
+    <mxGraphModel dx="2062" dy="1122" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="L2pB36DwLTajfiIPt22F-0" />
+        <mxCell id="L2pB36DwLTajfiIPt22F-1" parent="L2pB36DwLTajfiIPt22F-0" />
+        <mxCell id="3sLBTO2HNdFKD5e_auxT-0" value="Name&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;/span&gt;Color Icon&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;/span&gt;Avail Lots" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="L2pB36DwLTajfiIPt22F-1">
+          <mxGeometry x="180" y="120" width="460" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="3sLBTO2HNdFKD5e_auxT-1" value="Favourites" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="L2pB36DwLTajfiIPt22F-1">
+          <mxGeometry x="290" y="40" width="230" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3sLBTO2HNdFKD5e_auxT-2" value="Del" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="L2pB36DwLTajfiIPt22F-1">
+          <mxGeometry x="650" y="115" width="40" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="3sLBTO2HNdFKD5e_auxT-3" value="(List of 10)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="L2pB36DwLTajfiIPt22F-1">
+          <mxGeometry x="450" y="45" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
