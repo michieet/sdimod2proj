@@ -1,6 +1,6 @@
 import URAParkRateAPI from "./URAParkRateAPI";
 import LTAParkRateAPI from "./LTAParkRateAPI";
-import HDBParkRateAPI from "./HDBParkRateAPI";
+import HDBParkRate from "./HDBParkRateCalculator";
 import DisplayRateData from "./DisplayRateData";
 import { useState } from 'react';
 
