@@ -1,0 +1,29 @@
+.favH2 {
+    color: #FFFFFF ;
+}
+.fav {
+    background-color: #FCA311 ;
+    border-radius: 10px;
+    width: 500px;
+    margin: auto;
+
+    
+}
+.favDelBtn {
+    border-radius: 50% ;
+    border: none;
+    /* border: 1px solid #FFFFFF; */
+    padding: 10px;
+    background-color: #E5E5E5;
+    transition-duration: 0.4s;
+}
+.favDelBtn:hover {
+    background-color: #14213D;
+    color: #FFFFFF;
+}
+body {
+    background-color: #14213D ;
+}
+p {
+    color: #FFFFFF;
+}
