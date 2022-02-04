@@ -22,9 +22,9 @@ function ViewFavouriteList (props) {
               {
                 favouriteList.length > 0 ? favouriteList.map( f =>
                     <tr key={uniqueId('fav')}>
-                        <td>{f.name}</td>
-                        <td>{f.coloricon}</td>
-                        <td>{f.availlots}</td>
+                        <td>{f.Development}</td>
+                        <td>coloricon</td>
+                        <td>{f.AvailableLots}</td>
                         <td> { deleteItem ? <button className="favDelBtn" onClick={() => deleteItem(f.id)}>Del</button> : null}
                         </td>
                     </tr>
