@@ -8,8 +8,8 @@ function DisplayRateData (props){
                 {props.rateData.map((o)=>{
                     return (
                         <tr>
-                            <th>{o.timeslot}</th>
-                            <th>{o.parkRate}</th>
+                            <th className="timeslot">{o.timeslot}</th>
+                            <th className="parkRate">{o.parkRate}</th>
                         </tr>
                     );
                 })}
