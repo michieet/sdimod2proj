@@ -5,26 +5,22 @@ function getNearestCarparks(userLoc, carparksLoc, setNearestCarpark){
     function checkCurr(){
         console.log("checking loc..")
         if (userLoc.latitude> 1.48 || userLoc.latitude <1.15){
-            throw new Error (`latitude: ${userLoc.latitude} is out of bound`);
+            return false;
         };
         if (userLoc.longitude> 104.06 || userLoc.longitude <103.59){
-            throw new Error (`longitude: ${userLoc.longitude} is out of bound`);
+            return false;
         };
-        console.log("Location within boundaries")
+        console.log("Location within boundaries");
+        return true;
 
     }
-    
 
     function getNearestCarparks(){
-
-         console.log(carparksLoc);
 
          setNearestCarpark(carparksLoc.filter(isCarparkWithinDistance));
      }
 
      function isCarparkWithinDistance(carpark){
-
-        console.log(carpark.latitude, carpark.longitude, userLoc.latitude, userLoc.longitude)
 
         let carpark_loc = {
             latitude:carpark.latitude,
@@ -36,8 +32,6 @@ function getNearestCarparks(userLoc, carparksLoc, setNearestCarpark){
             longitude: userLoc.longitude,
         };
 
-        console.log(getDistance(carpark_loc, user_loc) < 1000);
-
         return(
             getDistance(carpark_loc, user_loc) < 1000
         )
@@ -45,9 +39,11 @@ function getNearestCarparks(userLoc, carparksLoc, setNearestCarpark){
      }
 
 
-     checkCurr();
-     getNearestCarparks();
-
+     if(checkCurr()){
+        getNearestCarparks();
+    }else{
+        setNearestCarpark([]);
+    }
 
 
 }
