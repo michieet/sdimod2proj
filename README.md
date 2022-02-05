@@ -72,10 +72,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Extra Notes from Janice
 
-URAdb - initiate to port 3300
 LTAdb - initiate to port 3301
 HDBdb - initiate to port 3302
+URAdb - initiate to port 3303
 
 Command to use:
-json-server ratesdb/uradb.json --port 3300
-3300
+json-server ratesdb/ltadb.json --port 3301
+json-server ratesdb/hdbdb.json --port 3302
+json-server ratesdb/uradb.json --port 3303

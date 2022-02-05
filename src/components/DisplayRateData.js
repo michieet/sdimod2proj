@@ -1,14 +1,21 @@
+function DisplayRateData (props){
 
-
-function DisplayRateData (){
-
+    console.log("rateData", props.rateData);
+  
     return (
-        <>this is the displaydata piece</>
+        <>
+            <table>
+                {props.rateData.map((o)=>{
+                    return (
+                        <tr>
+                            <th>{o.timeslot}</th>
+                            <th>{o.parkRate}</th>
+                        </tr>
+                    );
+                })}
+            </table>   
+        </>
     )
-
-
-
-
 
 }
 
