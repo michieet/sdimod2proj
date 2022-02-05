@@ -5,7 +5,7 @@ import ShowRates from "./components/ShowRates";
 
 function JaniceTest() {
 
-  let index = 2;
+  let index = 0;
 
   const testVarArray = [
     {

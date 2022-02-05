@@ -1,8 +1,8 @@
-import URAParkRateAPI from "./URAParkRateAPI";
-import LTAParkRateAPI from "./LTAParkRateAPI";
+import URAParkRate from "./URAParkRate";
+import LTAParkRate from "./LTAParkRate";
 import HDBParkRate from "./HDBParkRate";
 import DisplayRateData from "./DisplayRateData";
-import { useState , useEffect } from 'react';
+import { useState } from 'react';
 import _ from "lodash";
 
 // props need to be an object that includes keys of CarparkID and Agency info
@@ -17,10 +17,22 @@ function ShowRates (props){
 
     switch(props.carparkInfo.Agency.toUpperCase()){
         case "LTA":
-            console.log(props.carparkInfo.CarParkID);
+            (async () => {
+                parkRateInfo = await LTAParkRate(props.carparkInfo.CarParkID);
+                console.log("parkRateInfo", parkRateInfo);
+                if( !(_.isEqual(parkRateData,parkRateInfo))){
+                    setParkRateData(parkRateInfo);
+                };
+            })();
             break;
         case "URA":
-            console.log(props.carparkInfo.CarParkID);
+            (async () => {
+                parkRateInfo = await URAParkRate(props.carparkInfo.CarParkID);
+                console.log("parkRateInfo", parkRateInfo);
+                if( !(_.isEqual(parkRateData,parkRateInfo))){
+                    setParkRateData(parkRateInfo);
+                };
+            })();
             break;
         case "HDB":
             (async () => {
