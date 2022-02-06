@@ -1,17 +1,44 @@
 import {useParams} from 'react-router-dom';
+import {useState} from 'react';
 
 function AppContent(props){
 
     const {id} = useParams();
+    const {nearestCarpark, favoriteCarpark, setUserLoc} = props;
+    let [userInput, setUserInput] = useState({latitude:"", longitude:""})
 
     console.log(props.nearestCarpark);
 
-    const {nearestCarpark, favoriteCarpark} = props;
+
+    function handleInput(event){
+
+        let input = {...userInput};
+   
+        console.log(event.target.id);
+   
+        if (event.target.value==="" || (/^\d+\.?\d*$/).test(event.target.value)){
+   
+         input[event.target.id]=event.target.value;
+   
+         setUserInput(input);
+       }
+   
+      }
 
     function DisplayCarpark(carpark){
         return(
-            <div key={carpark.Agency+carpark.CarParkID+carpark.Location+carpark.LotType}>
-                {carpark.CarParkID+", "+carpark.Area+", "+carpark.Development+", "+carpark.Location+", "+carpark.AvailableLots+", "+carpark.LotType+", "+carpark.Agency}
+            <div key={carpark.Agency+carpark.CarParkID+carpark.Location+carpark.LotType} className="card">
+                <div className="icons">
+                    <div>♥</div><div>$</div>
+                </div>
+                <h2>
+                    {carpark.AvailableLots} , {carpark.LotType}
+                </h2>
+                <h3>
+                    {carpark.Development}
+                </h3>
+                <h4>{carpark.Agency}</h4>
+
             </div>
         )
     }
@@ -24,6 +51,7 @@ function AppContent(props){
             console.log("nearest selected");
             console.log(nearestCarpark);
             if (nearestCarpark.length !== 0){
+                nearestCarpark.sort((a,b)=>-(a.AvailableLots - b.AvailableLots));
                 carparkList = nearestCarpark.map(DisplayCarpark);
             } else{
                 carparkList = <div>No carpark found within 1km</div>;
@@ -43,7 +71,23 @@ function AppContent(props){
 
     return(
         <>
-            {DisplayList()}
+
+            { id==="nearest"?
+                <form onSubmit={(event)=>{
+                    event.preventDefault();
+                    setUserLoc(userInput);
+                }}>
+                    <label htmlFor="latitude">Latitude</label>
+                    <input type="text" id="latitude" value={userInput.latitude} onChange={handleInput}></input><br />
+                    <label htmlFor="longitude">Longitude</label>
+                    <input type="text" id="longitude" value={userInput.longitude} onChange={handleInput}></input><br />
+                    <button type="submit">Search</button>
+                </form> : ""
+            }
+
+            <div className="display-container">
+                {DisplayList()}
+            </div>
         </>
     )
 

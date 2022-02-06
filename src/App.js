@@ -10,6 +10,7 @@ import {
   Route
 } from "react-router-dom";
 import AppContent from "./component/appContent";
+import ErrorBoundary from './component/errorBoundary';
 
 function App() {
 
@@ -80,7 +81,7 @@ function App() {
 
       setCarparksLocData(data);
 
-      setUserLoc({latitude:"1.308990", longitude:"103.854340" });
+      setUserLoc({latitude:"", longitude:"" });
 
    },[])
 
@@ -97,29 +98,22 @@ function App() {
     <BrowserRouter>
     
       <div className="App">
-        <h1>Where Can Park</h1>
-        <form onSubmit={(event)=>{
-          event.preventDefault();
-          setUserLoc(userInput);
-        }}>
-          <label htmlFor="latitude">Latitude</label>
-          <input type="text" id="latitude" value={userInput.latitude} onChange={handleInput}></input><br />
-          <label htmlFor="longitude">Longitude</label>
-          <input type="text" id="longitude" value={userInput.longitude} onChange={handleInput}></input><br />
-          <button type="submit">Search</button>
-        </form>
-        <nav className="App-nav">
+      <nav className="App-nav">
             <div>
               <Link to="/favorites">Favourites</Link>
             </div>
             <div>
               <Link to="/nearest">Nearest</Link>
             </div>
-          </nav>
+        </nav>
+        <h1>Where Can Park</h1>
+
           <div className="App-content">
             <Switch>
               <Route path="/:id">
-                <AppContent nearestCarpark={nearestCarpark} favoriteCarpark={favoriteCarpark}/>
+                <ErrorBoundary>
+                  <AppContent nearestCarpark={nearestCarpark} favoriteCarpark={favoriteCarpark} setUserLoc={setUserLoc}/>
+                </ErrorBoundary>
               </Route>
             </Switch>
         {/* <DisplayCarparks carpark={nearestCarpark}/> */}
