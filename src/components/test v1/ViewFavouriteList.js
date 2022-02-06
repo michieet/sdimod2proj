@@ -1,10 +1,13 @@
 import React from 'react'
 import { uniqueId } from 'lodash';
+import { IoMdHeartDislike } from "react-icons/io";
+
 
 //later stage may need uniqueID from lodash to create unique id for each newly added carpark location
 
 function ViewFavouriteList (props) {
     const {favouriteList, deleteItem = 0} = props;
+
 
     return(
         <div>
@@ -25,7 +28,10 @@ function ViewFavouriteList (props) {
                         <td>{f.Development}</td>
                         <td>coloricon</td>
                         <td>{f.AvailableLots}</td>
-                        <td> { deleteItem ? <button className="favDelBtn" onClick={() => deleteItem(f.id)}>Del</button> : null}
+                        <td> { deleteItem ? <IoMdHeartDislike onClick={() => deleteItem(f.id)} style={{color: "red"}}>
+                        </IoMdHeartDislike>
+                        : null}
+
                         </td>
                     </tr>
                     )
