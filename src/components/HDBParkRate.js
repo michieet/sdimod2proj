@@ -73,7 +73,7 @@ async function HDBParkRate(CarParkID){
         }
 
         // Check if carpark has night parking.
-        console.log(data[0].night_parking);
+        //console.log(data[0].night_parking);
         if (data[0].night_parking === "YES"){
             HDBRateData.push(nightParkRate);
         } else {
@@ -81,7 +81,7 @@ async function HDBParkRate(CarParkID){
         }
 
         // Check & populate the free parking details.
-        console.log(data[0].free_parking);
+        //console.log(data[0].free_parking);
         if (!(data[0].free_parking === "NO")){
             const freeParkDetails = {
                     "timeslot" : data[0].free_parking,
@@ -94,7 +94,7 @@ async function HDBParkRate(CarParkID){
 
  
 
-    console.log("HDBRateData before return", HDBRateData);
+    //console.log("HDBRateData before return", HDBRateData);
     return HDBRateData;    
 }
 

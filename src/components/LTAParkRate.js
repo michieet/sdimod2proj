@@ -28,7 +28,7 @@ async function LTAParkRate (CarParkID){
         })
     }
  
-    console.log("LTARateData before return", LTARateData);
+    //console.log("LTARateData before return", LTARateData);
     return LTARateData;  
 }
 

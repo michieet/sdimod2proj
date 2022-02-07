@@ -6,6 +6,8 @@ import carparkData from '../carparkData';
 import PostalcodeInput from '../PostalcodeInput';
 import ShowRates from '../components/ShowRates';
 import ColorIcon from '../components/colorIcon';
+import availableAPI from '../components/availableAPI';
+import AddFav from '../components/AddFav';
 
 function AppContent(){
 
@@ -22,26 +24,26 @@ function AppContent(){
     function retrieveCarparkData (){
       console.log("Getting data...");
   
-      let data;
+      let carparksData;
   
-      data = mockedData.value;
+    //   data = mockedData.value;
 
-      data = data.filter(carpark=>carpark.LotType==="C")
-
-      setCarparksLocData(data);
-  
-  
-      // carparkData.get("/CarParkAvailabilityv2").then(
-      //     res=>{
-      //         if (res.status===200){
-      //             data = res.data.value;
-      //             console.log("Data received");
-      //         }
-      //     }
-      // ).catch(err=>{
-      //     console.log(err.message);
-      //     data = mockedData.value;
-      // })
+    availableAPI.get("/value?LotType=C").then(
+        res=>{
+            if (res.status===200){
+                console.log("Data received");
+                carparksData = res.data;
+                //console.log(carparksData);
+                // data = data.filter(carpark=>carpark.LotType==="C");
+                setCarparksLocData(carparksData);
+            }
+        }
+    ).catch(err=>{
+        // console.log(err.message);
+        // carparksData = mockedData.value;
+        // carparksData = carparksData.filter(carpark=>carpark.LotType==="C");
+        // setCarparksLocData(carparksData);
+    })
 
         
     }
@@ -117,7 +119,7 @@ function AppContent(){
                             cost.style.display ="none"
                         }
 
-                    }}>$</div>
+                    }}>$</div><div><AddFav setFavoriteCarpark={setFavoriteCarpark} carpark={carpark} favoriteCarpark={favoriteCarpark}/></div>
                 </div>
 
                 

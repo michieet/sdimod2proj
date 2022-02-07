@@ -1,4 +1,4 @@
-import { IoIosHeartDislike, IoIosHeartEmpty } from "react-icons/io";
+//import { IoIosHeartDislike, IoIosHeartEmpty } from "react-icons/io";
 
 function AddFav (props) {
 
@@ -12,9 +12,12 @@ function AddFav (props) {
     };
 
     const deleteFavCarpark = () => {
-        setFavoriteCarpark(favoriteCarpark.filter(item => item.carpark.id !== carpark.id));
+        setFavoriteCarpark(favoriteCarpark.filter(item => {
+            console.log(item.CarParkID);
+            console.log(carpark.CarParkID);
+            return item.CarParkID !== carpark.CarParkID}));
         console.log("favouriteCarpark",favoriteCarpark);
-        console.log("deleted from Favourite")
+        console.log("deleted from Favourite");
     };
 
     return (
