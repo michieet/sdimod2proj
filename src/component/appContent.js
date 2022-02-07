@@ -4,6 +4,10 @@ import mockedData from "../LTACarparkData.json";
 import getNearestCarparks from './nearestCarpark';
 import carparkData from '../carparkData';
 import PostalcodeInput from '../PostalcodeInput';
+import ShowRates from '../components/ShowRates';
+import ColorIcon from '../components/colorIcon';
+import availableAPI from '../components/availableAPI';
+import AddFav from '../components/AddFav';
 
 function AppContent(){
 
@@ -20,24 +24,26 @@ function AppContent(){
     function retrieveCarparkData (){
       console.log("Getting data...");
   
-      let data;
+      let carparksData;
   
-      data = mockedData.value;
+    //   data = mockedData.value;
 
-      setCarparksLocData(data);
-  
-  
-      // carparkData.get("/CarParkAvailabilityv2").then(
-      //     res=>{
-      //         if (res.status===200){
-      //             data = res.data.value;
-      //             console.log("Data received");
-      //         }
-      //     }
-      // ).catch(err=>{
-      //     console.log(err.message);
-      //     data = mockedData.value;
-      // })
+    availableAPI.get("/value?LotType=C").then(
+        res=>{
+            if (res.status===200){
+                console.log("Data received");
+                carparksData = res.data;
+                //console.log(carparksData);
+                // data = data.filter(carpark=>carpark.LotType==="C");
+                setCarparksLocData(carparksData);
+            }
+        }
+    ).catch(err=>{
+        // console.log(err.message);
+        // carparksData = mockedData.value;
+        // carparksData = carparksData.filter(carpark=>carpark.LotType==="C");
+        // setCarparksLocData(carparksData);
+    })
 
         
     }
@@ -91,21 +97,59 @@ function AppContent(){
     //   }
 
     function DisplayCarpark(carpark){
+
+        //let [showPrice, setShowPrice] = useState(false);
+
         return(
-            <div key={carpark.Agency+carpark.CarParkID+carpark.Location+carpark.LotType} className="card">
+            <div key={carpark.Agency+carpark.CarParkID} className="card" id={carpark.Agency+carpark.CarParkID}>
+                
+
                 <div className="icons">
-                    <div>♥</div><div>$</div>
+                    <div onClick={()=>{
+                        let elemID= carpark.Agency+carpark.CarParkID;
+                        let avail = document.querySelector(`#${elemID}>div>#available_lots`);
+                        if (avail.style.display ==="none"){
+                            avail.style.display = "block";
+                        } else{
+                            avail.style.display = "none"};
+                        let cost = document.querySelector(`#${elemID}>div>#rates`);
+                        if (cost.style.display ==="none"){
+                            cost.style.display ="block";
+                        } else {
+                            cost.style.display ="none"
+                        }
+
+                    }}>$</div><div><AddFav setFavoriteCarpark={setFavoriteCarpark} carpark={carpark} favoriteCarpark={favoriteCarpark}/></div>
                 </div>
-                <h2>
-                    {carpark.AvailableLots} , {carpark.LotType}, {carpark.CarParkID}
-                </h2>
-                <h3>
-                    {carpark.Development}
-                </h3>
-                <h4>{carpark.Agency}</h4>
+
+                
+                <div>                
+                    <h2>
+                        {carpark.Development} <ColorIcon carpark={carpark} />
+                    </h2>
+                    <h4>{carpark.Agency}</h4>
+                    <h3 id="available_lots">
+                        {carpark.AvailableLots} , {carpark.CarParkID}
+                    </h3>
+
+                    <div id="rates" style={{display:"none"}}>
+                        <ShowRates carparkInfo={carpark}/>
+                    </div>
+
+                </div>
 
             </div>
-        )
+                
+            //     {/* <h2>
+            //         {carpark.AvailableLots} , {carpark.LotType}, {carpark.CarParkID}
+            //     </h2>
+            //     <h3>
+            //         {carpark.Development}
+            //     </h3>
+            //     <h4>{carpark.Agency}</h4>
+
+            // </div> */}
+        );
     }
 
 

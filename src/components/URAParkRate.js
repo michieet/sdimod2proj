@@ -26,7 +26,7 @@ async function URAParkRate (CarParkID){
         })
     }
  
-    console.log("URARateData before return", URARateData);
+    //console.log("URARateData before return", URARateData);
     return URARateData;  
 }
 

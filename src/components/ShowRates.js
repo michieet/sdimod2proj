@@ -12,14 +12,14 @@ function ShowRates (props){
     let parkRateInfo;
     const [parkRateData, setParkRateData] = useState([]);
 
-    console.log(props.carparkInfo.Agency.toUpperCase());
-    console.log(props.carparkInfo.CarParkID);
+    //console.log(props.carparkInfo.Agency.toUpperCase());
+    //console.log(props.carparkInfo.CarParkID);
 
     switch(props.carparkInfo.Agency.toUpperCase()){
         case "LTA":
             (async () => {
                 parkRateInfo = await LTAParkRate(props.carparkInfo.CarParkID);
-                console.log("parkRateInfo", parkRateInfo);
+                //console.log("parkRateInfo", parkRateInfo);
                 if( !(_.isEqual(parkRateData,parkRateInfo))){
                     setParkRateData(parkRateInfo);
                 };
@@ -28,7 +28,7 @@ function ShowRates (props){
         case "URA":
             (async () => {
                 parkRateInfo = await URAParkRate(props.carparkInfo.CarParkID);
-                console.log("parkRateInfo", parkRateInfo);
+                //console.log("parkRateInfo", parkRateInfo);
                 if( !(_.isEqual(parkRateData,parkRateInfo))){
                     setParkRateData(parkRateInfo);
                 };
@@ -37,7 +37,7 @@ function ShowRates (props){
         case "HDB":
             (async () => {
                 parkRateInfo = await HDBParkRate(props.carparkInfo.CarParkID);
-                console.log("parkRateInfo", parkRateInfo);
+                //console.log("parkRateInfo", parkRateInfo);
                 if( !(_.isEqual(parkRateData,parkRateInfo))){
                     setParkRateData(parkRateInfo);
                 };
@@ -49,10 +49,10 @@ function ShowRates (props){
             break;
     }
 
-    console.log("parkRateData", parkRateData);
+    //console.log("parkRateData", parkRateData);
     return (
         <>
-            <h1>{props.carparkInfo.Development}</h1>
+            {/* <h1>{props.carparkInfo.Development}</h1> */}
             <DisplayRateData rateData={parkRateData} />
         </>
         
