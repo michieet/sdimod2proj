@@ -1,5 +1,5 @@
 import { uniqueId } from 'lodash';
-import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
+import { IoIosHeart, IoIosHeartDislike, IoIosHeartEmpty } from "react-icons/io";
 import API from '../API/API'
 import { useState, useEffect } from "react";
 import "./Favourites.css";
@@ -8,7 +8,7 @@ import ViewFav from './ViewFav';
 function MockMain () {
 
     let [carparksData, setCarparksData] = useState([]);
-    let [favoriteCarpark, setNFavoriteCarpark] = useState([]);
+    let [favoriteCarpark, setFavoriteCarpark] = useState([]);
 
     const apiGetcarparksData = async () => {
         const {status, data} = await API.get('/value');
@@ -21,59 +21,26 @@ function MockMain () {
 useEffect( () => {
     console.log('useEffect')
     apiGetcarparksData();
-}, [])
+}, [favoriteCarpark])
 
 
-//Assign Default Favourite Value: False
-const defaultFavValue = carparksData.map(object => {
-    return {...object, Favourite: false};
-});
+//test hardcode push
 
-console.log("Assigning Default Favourite: False ",defaultFavValue);
-
-
-const addFavCarpark = (e)=> {
-    console.log("Testing: ",defaultFavValue[0].Favourite);
-    console.log(e.target)
+const addFavCarpark = () => {
+    favoriteCarpark.push({"CarParkID":"1","Area":"Marina","Development":"Suntec City","Location":"1.29375 103.85718","AvailableLots":1240,"LotType":"C","Agency":"LTA"})
+    setNFavoriteCarpark(favoriteCarpark);
+    console.log("favouriteCarpark",favoriteCarpark);
+    alert("added to Favourite")
   };
 
-  const deleteItem = () => {
-    console.log("clicked delete")
+//test hardcode pop
+  const deleteFavCarpark = () => {
+    favoriteCarpark.pop({"CarParkID":"1","Area":"Marina","Development":"Suntec City","Location":"1.29375 103.85718","AvailableLots":1240,"LotType":"C","Agency":"LTA"})
+    setNFavoriteCarpark(favoriteCarpark);
+    
+    console.log("favouriteCarpark",favoriteCarpark);
+    alert("deleted from Favourite")
 }
-
-
-
-// useEffect(() => {
-//     const carparkFavourites = JSON.parse(
-//         localStorage.getItem('carpark-app-favourites')
-//     );
-
-//     if (carparkFavourites) {
-//         setNFavoriteCarpark(carparkFavourites);
-//     }
-// }, []);
-
-
-// const saveToLocalStorage = (items) => {
-//     localStorage.setItem('carpark-app-favourites', JSON.stringify(items));
-// };
-
-// const addFavCarpark = (carpark) => {
-//     const newFavouriteList = [...favoriteCarpark, carpark];
-//     setNFavoriteCarpark(newFavouriteList);
-//     //saveToLocalStorage(newFavouriteList);
-//     alert("Added to Favourite");
-// };
-
-
-// const removeFavCarpark = (carpark) => {
-//     const newFavouriteList = favoriteCarpark.filter(
-//         (favourite) => favourite.ID !== carpark.ID
-//     );
-
-//     setNFavoriteCarpark(newFavouriteList);
-//     saveToLocalStorage(newFavouriteList);
-// };
 
 
     return (
@@ -91,14 +58,14 @@ const addFavCarpark = (e)=> {
             </thead>
           <tbody>
               {
-                defaultFavValue.map( r =>
+                carparksData.map( r =>
                     <tr key={uniqueId('main')}>
                         <td onClick={addFavCarpark}>{r.Development} - CarPark ID {r.CarParkID} </td>
                         <td>coloricon </td>
                         <td>{r.AvailableLots}</td>
                         <td><IoIosHeartEmpty onClick={addFavCarpark} style={{color: "red"}} /> 
                                 {/* <p>Add to Favourite</p><button onClick={handleClick} style={{color: 'red'}}>❤</button> */}
-                        
+                                <IoIosHeartDislike onClick={deleteFavCarpark} style={{color: "red"}} /> 
                         </td>
                     </tr>
                     )
@@ -107,6 +74,8 @@ const addFavCarpark = (e)=> {
             </table>
         
         <hr></hr>
+
+        <ViewFav favoriteCarpark={favoriteCarpark} deleteFavCarpark={deleteFavCarpark} />
         </>
     )
 }

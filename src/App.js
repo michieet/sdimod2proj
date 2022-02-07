@@ -1,5 +1,4 @@
 import './App.css';
-//import Favourites from './components/json data testing ver/Favourites';
 import MockMain from './components/MockMain';
 import ViewFav from './components/ViewFav';
 
@@ -9,7 +8,7 @@ function App() {
     <div className="App">
     <MockMain />
     <ViewFav />
-    {/* <Favourites /> */}
+
     </div>
   );
 }
