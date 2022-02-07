@@ -77,6 +77,7 @@ HDBdb - initiate to port 3302
 URAdb - initiate to port 3303
 
 Command to use:
-json-server ratesdb/ltadb.json --port 3301
-json-server ratesdb/hdbdb.json --port 3302
-json-server ratesdb/uradb.json --port 3303
+npx json-server json-server/availabilitydata.json --port 3300
+npx json-server ratesdb/ltadb.json --port 3301
+npx json-server ratesdb/hdbdb.json --port 3302
+npx json-server ratesdb/uradb.json --port 3303
