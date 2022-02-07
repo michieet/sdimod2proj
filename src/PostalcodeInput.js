@@ -1,11 +1,11 @@
 import axios from "axios";
 import {useState} from "react";
 
-function PostalcodeInput({props}) {
+function PostalcodeInput(props) {
 
-  // const{setUserLoc} = props;  
+  const{setUserLoc} = props;  
   const [postalCode, setPostalCode] = useState("");
-  const [userloc, setUserLoc] = useState()
+//  const [userloc, setUserLoc] = useState()
   let userLoc; 
 
   const handlePostalCode = (e)=>{
@@ -44,10 +44,9 @@ function PostalcodeInput({props}) {
         userLoc = {
          latitude : response.data.results[0].geometry.location.lat,
          longitude : response.data.results[0].geometry.location.lng
-
-
         }
         // console.log(userLoc);
+        setUserLoc(userLoc);
       
       }
      
@@ -63,12 +62,11 @@ function PostalcodeInput({props}) {
   // console.log('Postal Code:', postalCode);
   return (
     <div className="postalcode-input">
-      <h1>postal code input</h1>
       <div className="form-section">
         <form>
           <input
             type="text"
-            placeholder="Park Where?"
+            placeholder="Enter Your Location"
             name="postal-code"
             onChange={handlePostalCode}
             value={postalCode}

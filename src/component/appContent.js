@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import mockedData from "../LTACarparkData.json";
 import getNearestCarparks from './nearestCarpark';
 import carparkData from '../carparkData';
+import PostalcodeInput from '../PostalcodeInput';
 
 function AppContent(){
 
@@ -74,20 +75,20 @@ function AppContent(){
   
 
 
-    function handleInput(event){
+    // function handleInput(event){
 
-        let input = {...userInput};
+    //     let input = {...userInput};
    
-        console.log(event.target.id);
+    //     console.log(event.target.id);
    
-        if (event.target.value==="" || (/^\d+\.?\d*$/).test(event.target.value)){
+    //     if (event.target.value==="" || (/^\d+\.?\d*$/).test(event.target.value)){
    
-         input[event.target.id]=event.target.value;
+    //      input[event.target.id]=event.target.value;
    
-         setUserInput(input);
-       }
+    //      setUserInput(input);
+    //    }
    
-      }
+    //   }
 
     function DisplayCarpark(carpark){
         return(
@@ -137,16 +138,7 @@ function AppContent(){
         <>
 
             { id==="nearest"?
-                <form onSubmit={(event)=>{
-                    event.preventDefault();
-                    setUserLoc(userInput);
-                }}>
-                    <label htmlFor="latitude">Latitude</label>
-                    <input type="text" id="latitude" value={userInput.latitude} onChange={handleInput}></input><br />
-                    <label htmlFor="longitude">Longitude</label>
-                    <input type="text" id="longitude" value={userInput.longitude} onChange={handleInput}></input><br />
-                    <button type="submit">Search</button>
-                </form> : ""
+                <PostalcodeInput setUserLoc={setUserLoc}/>:""
             }
 
             <div className="display-container">
