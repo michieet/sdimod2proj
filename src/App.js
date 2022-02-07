@@ -1,15 +1,48 @@
 import './App.css';
-import MockMain from './components/MockMain';
-import ViewFav from './components/ViewFav';
+import {
+  BrowserRouter,
+  Link,
+  Switch,
+  Route
+} from "react-router-dom";
+import AppContent from "./component/appContent";
+import ErrorBoundary from './component/errorBoundary';
 
-// Hello
 function App() {
-  return (
-    <div className="App">
-    <MockMain />
 
-    </div>
+
+  
+  return (
+    <BrowserRouter>
+    
+      <div className="App">
+      <nav className="App-nav">
+            <div>
+              <Link to="/favorites">Favourites</Link>
+            </div>
+            <div>
+              <Link to="/nearest">Nearest</Link>
+            </div>
+        </nav>
+        <h1>Where Can Park</h1>
+
+          <div className="App-content">
+            <Switch>
+              <Route path="/:id">
+                <ErrorBoundary>
+                  <AppContent />
+                </ErrorBoundary>
+              </Route>
+              <Route path="/">
+                Your favourite parking app.
+              </Route>
+            </Switch>
+          </div>
+
+      </div>
+
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
