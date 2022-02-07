@@ -14,7 +14,7 @@ function AppContent(){
     let [userLoc, setUserLoc] = useState({latitude:"", longitude:"" });
     let [carparksLoc, setCarparksLoc] = useState([]);
     let [nearestCarpark, setNearestCarpark] = useState([]);
-    let [favoriteCarpark, setNFavoriteCarpark] = useState([]);
+    let [favoriteCarpark, setFavoriteCarpark] = useState([]);
   
   
     function retrieveCarparkData (){
