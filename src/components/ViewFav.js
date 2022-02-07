@@ -5,7 +5,7 @@ import colorIcon from './colorIcon';
 
 function ViewFav (props) {
 
-    const {favoriteCarpark, deleteFavCarpark} = props; 
+    const {favoriteCarpark, deleteFavCarpark, carpark} = props; 
 
   return(
     <div>
@@ -20,12 +20,12 @@ function ViewFav (props) {
             </tr>
         </thead>
         <tbody>
-          {favoriteCarpark.length > 0 ? favoriteCarpark.map(f =>
+          {favoriteCarpark.length > 0 ? favoriteCarpark.map(carpark =>
                 <tr key={uniqueId('fav')}>
-                    <td>{f.Development}</td>
+                    <td>{carpark.Development}</td>
                     <td><colorIcon /></td>
-                    <td>{f.AvailableLots}</td>
-                    <td> { deleteFavCarpark ? <IoMdHeartDislike onClick={() => deleteFavCarpark(f.id)} style={{color: "red"}}>
+                    <td>{carpark.AvailableLots}</td>
+                    <td> { deleteFavCarpark ? <IoMdHeartDislike onClick={() => deleteFavCarpark(carpark.CarParkID)} style={{color: "red"}}>
                     </IoMdHeartDislike>
                     : null}
 

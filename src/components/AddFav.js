@@ -12,16 +12,15 @@ function AddFav (props) {
     };
 
     const deleteFavCarpark = () => {
-        favoriteCarpark.pop(carpark)
-        setFavoriteCarpark(favoriteCarpark);
+        setFavoriteCarpark(favoriteCarpark.filter(item => item.carpark.id !== carpark.id));
         console.log("favouriteCarpark",favoriteCarpark);
         console.log("deleted from Favourite")
     };
 
     return (
         <>
-            <IoIosHeartEmpty onClick={addFavCarpark} style={{color: "red"}} /> 
-            <IoIosHeartDislike onClick={deleteFavCarpark} style={{color: "red"}} /> 
+            <button onClick={addFavCarpark} style={{color: "red"}}> ♥ </button>
+            <button onClick={deleteFavCarpark} style={{color: "red"}}> ⛔ </button>
         </>
     )
 }
