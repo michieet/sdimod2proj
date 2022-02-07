@@ -2,10 +2,11 @@ import './LotAvailability.css';
 import React, {useState, useEffect}from 'react';
 import { uniqueId } from 'lodash';
 import API from '../API/API';
+import colorIcon from './colorIcon';
 
 
 export default function LotAvailability(props) {
-    // const {data} = props;
+    const {data} = props;
     const [lotData, setLotData] = useState([]);
 
     const getData = async () => {
@@ -24,12 +25,7 @@ export default function LotAvailability(props) {
     const defaultData = lotData.map(object => {
         return {...object, Carpark: false};
     });
-    console.log("Carpark Data", defaultData);
-
-    function colorIcon() {
-         
-    }
-    
+    console.log("Carpark Data", defaultData);    
 
     return (
         <>
@@ -42,7 +38,7 @@ export default function LotAvailability(props) {
                         <h4>{r.CarParkID}</h4>
                         <h4>Area: {r.Area}</h4>
                         <h4>Location: {r.Location}</h4>
-                        <h4>Available Lots: {r.AvailableLots}</h4>
+                        <h4>Available Lots: {r.AvailableLots}{colorIcon(lotData)}</h4>
                     </div>
                     )}
             </h4>
