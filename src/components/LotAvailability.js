@@ -5,7 +5,7 @@ import API from '../API/API';
 
 
 export default function LotAvailability(props) {
-    const {data} = props;
+    // const {data} = props;
     const [lotData, setLotData] = useState([]);
 
     const getData = async () => {
@@ -25,6 +25,10 @@ export default function LotAvailability(props) {
         return {...object, Carpark: false};
     });
     console.log("Carpark Data", defaultData);
+
+    function colorIcon() {
+         
+    }
     
 
     return (
@@ -41,10 +45,6 @@ export default function LotAvailability(props) {
                         <h4>Available Lots: {r.AvailableLots}</h4>
                     </div>
                     )}
-                {/* // <h4>{data.CarParkID}</h4>
-                // Area: {data.Area} <br/>
-                // Location: {data.Location} <br/>
-                // Available Lots: {data.AvailableLots} <br/> */}
             </h4>
         </div>
         </>
