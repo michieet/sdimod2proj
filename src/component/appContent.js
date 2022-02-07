@@ -5,6 +5,7 @@ import getNearestCarparks from './nearestCarpark';
 import carparkData from '../carparkData';
 import PostalcodeInput from '../PostalcodeInput';
 import ShowRates from '../components/ShowRates';
+import ColorIcon from '../components/colorIcon';
 
 function AppContent(){
 
@@ -98,24 +99,41 @@ function AppContent(){
         //let [showPrice, setShowPrice] = useState(false);
 
         return(
-            <div key={carpark.Agency+carpark.CarParkID} className="card">
+            <div key={carpark.Agency+carpark.CarParkID} className="card" id={carpark.Agency+carpark.CarParkID}>
                 
 
                 <div className="icons">
-                    <div>$</div>
+                    <div onClick={()=>{
+                        let elemID= carpark.Agency+carpark.CarParkID;
+                        let avail = document.querySelector(`#${elemID}>div>#available_lots`);
+                        if (avail.style.display ==="none"){
+                            avail.style.display = "block";
+                        } else{
+                            avail.style.display = "none"};
+                        let cost = document.querySelector(`#${elemID}>div>#rates`);
+                        if (cost.style.display ==="none"){
+                            cost.style.display ="block";
+                        } else {
+                            cost.style.display ="none"
+                        }
+
+                    }}>$</div>
                 </div>
 
-                <div>
-                    <ShowRates carparkInfo={carpark}/>
-                </div>
+                
                 <div>                
                     <h2>
-                    {carpark.AvailableLots} , {carpark.LotType}, {carpark.CarParkID}
+                        {carpark.Development} <ColorIcon carpark={carpark} />
                     </h2>
-                    <h3>
-                    {carpark.Development}
-                    </h3>
                     <h4>{carpark.Agency}</h4>
+                    <h3 id="available_lots">
+                        {carpark.AvailableLots} , {carpark.CarParkID}
+                    </h3>
+
+                    <div id="rates" style={{display:"none"}}>
+                        <ShowRates carparkInfo={carpark}/>
+                    </div>
+
                 </div>
 
             </div>

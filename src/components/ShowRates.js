@@ -52,7 +52,7 @@ function ShowRates (props){
     console.log("parkRateData", parkRateData);
     return (
         <>
-            <h1>{props.carparkInfo.Development}</h1>
+            {/* <h1>{props.carparkInfo.Development}</h1> */}
             <DisplayRateData rateData={parkRateData} />
         </>
         

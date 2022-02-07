@@ -1,5 +1,6 @@
-export default function colorIcon(param) {
-    let lots = param.AvailableLots;
+export default function ColorIcon(param) {
+    let {carpark} = param;
+    let lots = carpark.AvailableLots;
     let red = "🔴";
     let yellow = "🟡";
     let green = "🟢";
