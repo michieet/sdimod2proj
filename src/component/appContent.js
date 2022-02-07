@@ -1,13 +1,77 @@
 import {useParams} from 'react-router-dom';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import mockedData from "../LTACarparkData.json";
+import getNearestCarparks from './nearestCarpark';
+import carparkData from '../carparkData';
 
-function AppContent(props){
+function AppContent(){
 
     const {id} = useParams();
-    const {nearestCarpark, favoriteCarpark, setUserLoc} = props;
-    let [userInput, setUserInput] = useState({latitude:"", longitude:""})
+    //const {nearestCarpark, favoriteCarpark, setUserLoc} = props;
+    let [userInput, setUserInput] = useState({latitude:"", longitude:""});
 
-    console.log(props.nearestCarpark);
+    let [userLoc, setUserLoc] = useState({latitude:"", longitude:"" });
+    let [carparksLoc, setCarparksLoc] = useState([]);
+    let [nearestCarpark, setNearestCarpark] = useState([]);
+    let [favoriteCarpark, setNFavoriteCarpark] = useState([]);
+  
+  
+    function retrieveCarparkData (){
+      console.log("Getting data...");
+  
+      let data;
+  
+      data = mockedData.value;
+
+      setCarparksLocData(data);
+  
+  
+      // carparkData.get("/CarParkAvailabilityv2").then(
+      //     res=>{
+      //         if (res.status===200){
+      //             data = res.data.value;
+      //             console.log("Data received");
+      //         }
+      //     }
+      // ).catch(err=>{
+      //     console.log(err.message);
+      //     data = mockedData.value;
+      // })
+
+        
+    }
+  
+    function setCarparksLocData(data){
+  
+      data.forEach(carpark=>{
+      carpark["latitude"] = carpark.Location.split(' ')[0];
+      carpark["longitude"] = carpark.Location.split(' ')[1];
+      })
+  
+      setCarparksLoc(data);
+     }
+  
+  
+     useEffect(()=>{
+
+        console.log(userInput);
+        if((id==="nearest" && userLoc.latitude && userLoc.longitude)||(id==="favorites")){
+
+            let update = setInterval(retrieveCarparkData,5000);
+        
+        return(
+            ()=>{clearInterval(update)}
+        )
+        }
+  
+     },[userLoc, carparksLoc])
+  
+  
+     useEffect(()=>{
+       getNearestCarparks(userLoc, carparksLoc, setNearestCarpark)
+     }, [userLoc, carparksLoc])
+  
+  
 
 
     function handleInput(event){
@@ -32,7 +96,7 @@ function AppContent(props){
                     <div>♥</div><div>$</div>
                 </div>
                 <h2>
-                    {carpark.AvailableLots} , {carpark.LotType}
+                    {carpark.AvailableLots} , {carpark.LotType}, {carpark.CarParkID}
                 </h2>
                 <h3>
                     {carpark.Development}
