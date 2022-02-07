@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Extra Notes from Janice
+
+LTAdb - initiate to port 3301
+HDBdb - initiate to port 3302
+URAdb - initiate to port 3303
+
+Command to use:
+json-server ratesdb/ltadb.json --port 3301
+json-server ratesdb/hdbdb.json --port 3302
+json-server ratesdb/uradb.json --port 3303
