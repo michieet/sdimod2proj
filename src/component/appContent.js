@@ -25,6 +25,8 @@ function AppContent(){
   
       data = mockedData.value;
 
+      data = data.filter(carpark=>carpark.LotType==="C")
+
       setCarparksLocData(data);
   
   
@@ -92,24 +94,42 @@ function AppContent(){
     //   }
 
     function DisplayCarpark(carpark){
+
+        //let [showPrice, setShowPrice] = useState(false);
+
         return(
-            <div key={carpark.Agency+carpark.CarParkID+carpark.Location+carpark.LotType} className="card">
+            <div key={carpark.Agency+carpark.CarParkID} className="card">
+                
+
                 <div className="icons">
-                    <div >♥</div><div>$</div>
+                    <div>$</div>
                 </div>
+
                 <div>
                     <ShowRates carparkInfo={carpark}/>
                 </div>
-                <h2>
+                <div>                
+                    <h2>
                     {carpark.AvailableLots} , {carpark.LotType}, {carpark.CarParkID}
-                </h2>
-                <h3>
+                    </h2>
+                    <h3>
                     {carpark.Development}
-                </h3>
-                <h4>{carpark.Agency}</h4>
+                    </h3>
+                    <h4>{carpark.Agency}</h4>
+                </div>
 
             </div>
-        )
+                
+            //     {/* <h2>
+            //         {carpark.AvailableLots} , {carpark.LotType}, {carpark.CarParkID}
+            //     </h2>
+            //     <h3>
+            //         {carpark.Development}
+            //     </h3>
+            //     <h4>{carpark.Agency}</h4>
+
+            // </div> */}
+        );
     }
 
 
