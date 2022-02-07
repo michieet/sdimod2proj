@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { uniqueId } from 'lodash';
 import { IoMdHeartDislike } from "react-icons/io";
+import colorIcon from './colorIcon';
 
 function ViewFav (props) {
 
-const {favoriteCarpark, deleteFavCarpark } = useState([]); 
-
-
-// useEffect (() => {
-
-// });
-
+    const {favoriteCarpark, deleteFavCarpark} = props; 
 
   return(
     <div>
@@ -19,16 +14,16 @@ const {favoriteCarpark, deleteFavCarpark } = useState([]);
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Color Icon </th>
+                <th>Color Icon</th>
                 <th>Avail Lots</th>
                 <th>Delete</th>
             </tr>
         </thead>
-      <tbody>
-          {favoriteCarpark.map( f =>
+        <tbody>
+          {favoriteCarpark.length > 0 ? favoriteCarpark.map(f =>
                 <tr key={uniqueId('fav')}>
                     <td>{f.Development}</td>
-                    <td>coloricon</td>
+                    <td><colorIcon /></td>
                     <td>{f.AvailableLots}</td>
                     <td> { deleteFavCarpark ? <IoMdHeartDislike onClick={() => deleteFavCarpark(f.id)} style={{color: "red"}}>
                     </IoMdHeartDislike>
@@ -37,31 +32,14 @@ const {favoriteCarpark, deleteFavCarpark } = useState([]);
                     </td>
                 </tr>
                 )
-          
-          }
-
-
-
-          {/* {
-            favoriteCarpark.length > 0 ? favoriteCarpark.map( f =>
-                <tr key={uniqueId('fav')}>
-                    <td>{f.Development}</td>
-                    <td>coloricon</td>
-                    <td>{f.AvailableLots}</td>
-                    <td> { deleteFavCarpark ? <IoMdHeartDislike onClick={() => deleteFavCarpark(f.id)} style={{color: "red"}}>
-                    </IoMdHeartDislike>
-                    : null}
-
-                    </td>
-                </tr>
-                )
-                : <tr><td>Your favourite list is empty
+                :   <tr><td>
+                    Your favourite list is empty
                     </td></tr>
-          } */}
-      </tbody>
+            }
+        </tbody>
         </table>
     </div>
-)
+    )
 }
 
 export default ViewFav;

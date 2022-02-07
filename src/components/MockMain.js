@@ -4,6 +4,7 @@ import API from '../API/API'
 import { useState, useEffect } from "react";
 import "./Favourites.css";
 import ViewFav from './ViewFav';
+import AddFav from './AddFav';
 
 function MockMain () {
 
@@ -16,31 +17,12 @@ function MockMain () {
             setCarparksData(data);
             //console.log("API Data",data)
         }
-}
+    }
 
-useEffect( () => {
-    console.log('useEffect')
-    apiGetcarparksData();
-}, [favoriteCarpark])
-
-
-//test hardcode push
-
-const addFavCarpark = () => {
-    favoriteCarpark.push({"CarParkID":"1","Area":"Marina","Development":"Suntec City","Location":"1.29375 103.85718","AvailableLots":1240,"LotType":"C","Agency":"LTA"})
-    setNFavoriteCarpark(favoriteCarpark);
-    console.log("favouriteCarpark",favoriteCarpark);
-    alert("added to Favourite")
-  };
-
-//test hardcode pop
-  const deleteFavCarpark = () => {
-    favoriteCarpark.pop({"CarParkID":"1","Area":"Marina","Development":"Suntec City","Location":"1.29375 103.85718","AvailableLots":1240,"LotType":"C","Agency":"LTA"})
-    setNFavoriteCarpark(favoriteCarpark);
-    
-    console.log("favouriteCarpark",favoriteCarpark);
-    alert("deleted from Favourite")
-}
+    useEffect( () => {
+        console.log('useEffect')
+        apiGetcarparksData();
+    }, [favoriteCarpark])
 
 
     return (
@@ -60,12 +42,13 @@ const addFavCarpark = () => {
               {
                 carparksData.map( r =>
                     <tr key={uniqueId('main')}>
-                        <td onClick={addFavCarpark}>{r.Development} - CarPark ID {r.CarParkID} </td>
+                        <td>{r.Development} - CarPark ID {r.CarParkID} </td>
                         <td>coloricon </td>
                         <td>{r.AvailableLots}</td>
-                        <td><IoIosHeartEmpty onClick={addFavCarpark} style={{color: "red"}} /> 
+                        <td>
+                            {/* <IoIosHeartEmpty onClick={addFavCarpark} style={{color: "red"}} /> 
                                 {/* <p>Add to Favourite</p><button onClick={handleClick} style={{color: 'red'}}>❤</button> */}
-                                <IoIosHeartDislike onClick={deleteFavCarpark} style={{color: "red"}} /> 
+                              {/*  <IoIosHeartDislike onClick={deleteFavCarpark} style={{color: "red"}} />  */}
                         </td>
                     </tr>
                     )
@@ -75,7 +58,8 @@ const addFavCarpark = () => {
         
         <hr></hr>
 
-        <ViewFav favoriteCarpark={favoriteCarpark} deleteFavCarpark={deleteFavCarpark} />
+        <AddFav addFavCarpark={addFavCarpark} deleteFavCarpark={deleteFavCarpark} />
+        <ViewFav favoriteCarpark={favoriteCarpark} deleteFavCarpark={deleteFavCarpark} /> 
         </>
     )
 }
