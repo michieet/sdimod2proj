@@ -4,6 +4,7 @@ import mockedData from "../LTACarparkData.json";
 import getNearestCarparks from './nearestCarpark';
 import carparkData from '../carparkData';
 import PostalcodeInput from '../PostalcodeInput';
+import ShowRates from '../components/ShowRates';
 
 function AppContent(){
 
@@ -94,7 +95,10 @@ function AppContent(){
         return(
             <div key={carpark.Agency+carpark.CarParkID+carpark.Location+carpark.LotType} className="card">
                 <div className="icons">
-                    <div>♥</div><div>$</div>
+                    <div >♥</div><div>$</div>
+                </div>
+                <div>
+                    <ShowRates carparkInfo={carpark}/>
                 </div>
                 <h2>
                     {carpark.AvailableLots} , {carpark.LotType}, {carpark.CarParkID}
