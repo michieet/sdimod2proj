@@ -22,7 +22,7 @@ function AppContent(){
     let [favoriteCarpark, setFavoriteCarpark] = useState(() => {
         const saved = localStorage.getItem("favoriteCarpark");
         const initialValue = JSON.parse(saved);
-        return initialValue || "";
+        return initialValue || [];
       });
   
   
