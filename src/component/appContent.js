@@ -19,7 +19,11 @@ function AppContent(){
     let [userLoc, setUserLoc] = useState({latitude:"", longitude:"" });
     let [carparksLoc, setCarparksLoc] = useState([]);
     let [nearestCarpark, setNearestCarpark] = useState([]);
-    let [favoriteCarpark, setFavoriteCarpark] = useState([]);
+    let [favoriteCarpark, setFavoriteCarpark] = useState(() => {
+        const saved = localStorage.getItem("favoriteCarpark");
+        const initialValue = JSON.parse(saved);
+        return initialValue || "";
+      });
   
   
     function retrieveCarparkData (){

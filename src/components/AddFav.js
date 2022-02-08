@@ -19,16 +19,19 @@ function AddFav (props) {
         setIsFav(!isFav);
         favoriteCarpark.push(carpark)
         setFavoriteCarpark(favoriteCarpark);
+        localStorage.setItem("favoriteCarpark", JSON.stringify(favoriteCarpark));
         console.log("favouriteCarpark",favoriteCarpark);
         console.log("added to Favourite")
     };
 
     const deleteFavCarpark = () => {
         setIsFav(!isFav);
-        setFavoriteCarpark(favoriteCarpark.filter(item => {
+        let newList = favoriteCarpark.filter(item => {
             console.log(item.CarParkID);
             console.log(carpark.CarParkID);
-            return item.CarParkID !== carpark.CarParkID}));
+            return item.CarParkID !== carpark.CarParkID})
+        setFavoriteCarpark(newList);
+        localStorage.setItem("favoriteCarpark", JSON.stringify(newList));
         console.log("favouriteCarpark",favoriteCarpark);
         console.log("deleted from Favourite");
     };
