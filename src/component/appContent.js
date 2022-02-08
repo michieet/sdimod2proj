@@ -81,6 +81,28 @@ function AppContent(){
      useEffect(()=>{
        getNearestCarparks(userLoc, carparksLoc, setNearestCarpark)
      }, [userLoc, carparksLoc])
+
+
+     useEffect(()=>{
+        updateFavoriteCarparks(carparksLoc,favoriteCarpark, setFavoriteCarpark);
+      }, [carparksLoc])
+
+
+    function updateFavoriteCarparks(carparksLoc,favoriteCarpark, setFavoriteCarpark){
+        let favCarparkList = [...favoriteCarpark];
+
+        if (favCarparkList.length >0 && carparksLoc.length > 0){
+            for (let i = 0; i<favCarparkList.length; i++){
+                let matchedCarpark = carparksLoc.find(carpark => carpark.CarParkID===favCarparkList[i].CarParkID);
+                console.log("matchedCarpark", matchedCarpark);
+                let currAvailLots = matchedCarpark.AvailableLots;
+                favCarparkList[i].AvailableLots = currAvailLots;
+            }
+
+            setFavoriteCarpark(favCarparkList);
+            console.log("Available lots in favourite list updated");
+        }
+    }
   
   
 
