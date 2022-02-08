@@ -1,7 +1,7 @@
 import './App.css';
 import {
   BrowserRouter,
-  Link,
+  NavLink,
   Switch,
   Route
 } from "react-router-dom";
@@ -17,11 +17,11 @@ function App() {
       <div className="App">
       <nav className="App-nav">
             <div className="navlinks">
-              <Link to="/favorites">Favourites</Link>
+              <NavLink exact={true} activeClassName="isActive" to="/favorites" >Favourites</NavLink>
             </div>
             <div>   |   </div>
             <div className="navlinks">
-              <Link to="/nearest">Nearest</Link>
+              <NavLink exact={true} activeClassName="isActive" to="/nearest" >Nearest</NavLink>
             </div>
         </nav>
         <h1><img className="carlogo" src={favicon}/>Where Can Park</h1>
