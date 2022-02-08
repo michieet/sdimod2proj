@@ -39,7 +39,7 @@ function AppContent(){
             }
         }
     ).catch(err=>{
-        // console.log(err.message);
+        console.log(err.message);
         // carparksData = mockedData.value;
         // carparksData = carparksData.filter(carpark=>carpark.LotType==="C");
         // setCarparksLocData(carparksData);
@@ -61,7 +61,6 @@ function AppContent(){
   
      useEffect(()=>{
 
-        console.log(userInput);
         if((id==="nearest" && userLoc.latitude && userLoc.longitude)||(id==="favorites")){
 
             let update = setInterval(retrieveCarparkData,5000);
@@ -159,11 +158,17 @@ function AppContent(){
         if (id==="nearest"){
             console.log("nearest selected");
             console.log(nearestCarpark);
-            if (nearestCarpark.length !== 0){
+            if (!userLoc.longitude || !userLoc.latitude){
+                carparkList = <div>Please enter your current location</div>
+            }else if (nearestCarpark.length == 0){
+                carparkList = <div>Retrieving data...</div>
+            }
+            else if (nearestCarpark===false){
+                carparkList = <div>No carpark found within 1km</div>;
+            }
+            else{
                 nearestCarpark.sort((a,b)=>-(a.AvailableLots - b.AvailableLots));
                 carparkList = nearestCarpark.map(DisplayCarpark);
-            } else{
-                carparkList = <div>No carpark found within 1km</div>;
             }
         } else if (id==="favorites"){
             console.log("favorites selected");
