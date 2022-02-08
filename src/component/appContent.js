@@ -8,6 +8,7 @@ import ShowRates from '../components/ShowRates';
 import ColorIcon from '../components/colorIcon';
 import availableAPI from '../components/availableAPI';
 import AddFav from '../components/AddFav';
+import Spinner from "../assets/Spinner.svg";
 
 function AppContent(){
 
@@ -161,7 +162,7 @@ function AppContent(){
             if (!userLoc.longitude || !userLoc.latitude){
                 carparkList = <div>Please enter your current location</div>
             }else if (nearestCarpark.length == 0){
-                carparkList = <div>Retrieving data...</div>
+                carparkList = <div><img src={Spinner} />.</div>
             }
             else if (nearestCarpark===false){
                 carparkList = <div>No carpark found within 1km</div>;

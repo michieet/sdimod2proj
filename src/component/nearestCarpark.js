@@ -49,7 +49,7 @@ function getNearestCarparks(userLoc, carparksLoc, setNearestCarpark){
      if(checkCurr()){
         getNearestCarparks();
     }else{
-        setNearestCarpark([]);
+        setNearestCarpark(false);
     }
 
 
