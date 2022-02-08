@@ -162,7 +162,7 @@ function AppContent(){
             if (!userLoc.longitude || !userLoc.latitude){
                 carparkList = <div className="centerOfGrid">Please enter your current location</div>
             }else if (nearestCarpark.length == 0){
-                carparkList = <div><img src={Spinner} />.</div>
+                carparkList = <div className="centerOfGrid"><img src={Spinner} />.</div>
             }
             else if (nearestCarpark===false){
                 carparkList = <div className="centerOfGrid">No carpark found within 1km</div>;
