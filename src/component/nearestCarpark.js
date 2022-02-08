@@ -19,7 +19,9 @@ function getNearestCarparks(userLoc, carparksLoc, setNearestCarpark){
 
         console.log(carparksLoc.filter(isCarparkWithinDistance).length);
 
+
         if (userLoc && carparksLoc.length >0 && carparksLoc.filter(isCarparkWithinDistance).length===0 ){
+
             setNearestCarpark(false)
 
         }else{

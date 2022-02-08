@@ -160,12 +160,12 @@ function AppContent(){
             console.log("nearest selected");
             console.log(nearestCarpark);
             if (!userLoc.longitude || !userLoc.latitude){
-                carparkList = <div>Please enter your current location</div>
+                carparkList = <div className="centerOfGrid">Please enter your current location</div>
             }else if (nearestCarpark.length == 0){
                 carparkList = <div><img src={Spinner} />.</div>
             }
             else if (nearestCarpark===false){
-                carparkList = <div>No carpark found within 1km</div>;
+                carparkList = <div className="centerOfGrid">No carpark found within 1km</div>;
             }
             else{
                 nearestCarpark.sort((a,b)=>-(a.AvailableLots - b.AvailableLots));
@@ -177,7 +177,7 @@ function AppContent(){
             if (favoriteCarpark.length !== 0){
                 carparkList = favoriteCarpark.map(DisplayCarpark);
             }else{
-                carparkList = <div>No favaourite carpark saved</div>;                
+                carparkList = <div className="centerOfGrid">No favourite carpark saved</div>;                
             }
         }
 

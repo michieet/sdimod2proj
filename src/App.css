@@ -1,16 +1,67 @@
+body {
+  background-color: whitesmoke;
+}
+
+.App{
+  text-align: center;
+
+}
+
+
+.App-nav{
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 10px;
+  left: 0.5vw;
+}
+
+.navlinks{
+  padding: 0px 10px;
+}
+
+.centerOfGrid{
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+
 .display-container{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
-  margin: 10px;
+  gap: 15px;
+  margin: 15px;
+}
+
+@media (max-width: 768px) and (min-width: 480px) {
+  .display-container{
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 15px;
+  }
+}
+
+
+@media (max-width: 480px) and (min-width: 320px) {
+  .display-container{
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 15px;
+  }
 }
 
 .card{
   padding: 30px 25px 10px 25px;
   border-radius: 10px;
   position:relative;
-  -webkit-box-shadow: 5px 5px 15px 5px #858585; 
-  box-shadow: 5px 5px 15px 5px #858585;
+  -webkit-box-shadow: 5px 5px 15px 5px rgb(219, 219, 219); 
+  box-shadow: 5px 5px 15px 5px rgb(219, 219, 219);
+  background-color: white;
 }
 
 .icons{
@@ -24,6 +75,51 @@
   right: 15px;
   cursor: pointer;
 }
+
+h1{
+  text-align: center;
+  margin-top: 50px;
+}
+
+form{
+  text-align: center;
+}
+
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #f7c5c0;
+	background-color:#ff9479;
+	border-radius:6px;
+	border:1px solid #ff9479;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:10px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+  margin: 10px;
+}
+.myButton:hover {
+	background-color:#e4685d;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.inputField {
+  font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:10px 24px;
+}
+
+.postalcode-input{
+  margin-bottom: 50px;
+}
+
 
 nav{
   position: absolute;
@@ -39,4 +135,26 @@ nav{
   padding-top: 15px;
   font-size: 20px;
   cursor: pointer;
+}
+
+.parkRate{
+  font-weight: 300;
+}
+
+table, tr, th{
+  border: 1px solid rgb(233, 233, 233);
+  border-collapse: collapse;
+}
+
+table {
+  margin-bottom: 20px;
+}
+
+th{
+  padding: 15px;
+}
+
+.carlogo{
+  max-height: 25px;
+  padding-right: 20px;
 }
