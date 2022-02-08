@@ -38,12 +38,29 @@ body {
   margin: 15px;
 }
 
+@media (max-width: 768px) and (min-width: 480px) {
+  .display-container{
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 15px;
+  }
+}
+
+
+@media (max-width: 480px) and (min-width: 320px) {
+  .display-container{
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 15px;
+  }
+}
+
 .card{
   padding: 30px 25px 10px 25px;
   border-radius: 10px;
   position:relative;
-  -webkit-box-shadow: 5px 5px 15px 5px #b3b3b3; 
-  box-shadow: 5px 5px 15px 5px #b3b3b3;
+  -webkit-box-shadow: 5px 5px 15px 5px rgb(219, 219, 219); 
+  box-shadow: 5px 5px 15px 5px rgb(219, 219, 219);
   background-color: white;
 }
 
@@ -118,4 +135,26 @@ nav{
   padding-top: 15px;
   font-size: 20px;
   cursor: pointer;
+}
+
+.parkRate{
+  font-weight: 300;
+}
+
+table, tr, th{
+  border: 1px solid rgb(233, 233, 233);
+  border-collapse: collapse;
+}
+
+table {
+  margin-bottom: 20px;
+}
+
+th{
+  padding: 15px;
+}
+
+.carlogo{
+  max-height: 25px;
+  padding-right: 20px;
 }

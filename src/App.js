@@ -7,10 +7,9 @@ import {
 } from "react-router-dom";
 import AppContent from "./component/appContent";
 import ErrorBoundary from './component/errorBoundary';
+import favicon from "./assets/favicon.ico";
 
 function App() {
-
-
   
   return (
     <BrowserRouter>
@@ -25,7 +24,7 @@ function App() {
               <Link to="/nearest">Nearest</Link>
             </div>
         </nav>
-        <h1>Where Can Park</h1>
+        <h1><img className="carlogo" src={favicon}/>Where Can Park</h1>
 
           <div className="App-content">
             <Switch>

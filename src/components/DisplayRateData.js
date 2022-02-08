@@ -4,7 +4,7 @@ function DisplayRateData (props){
   
     return (
         <>
-            <table>
+            <table className="ratesTable">
                 {props.rateData.map((o)=>{
                     return (
                         <tr>
