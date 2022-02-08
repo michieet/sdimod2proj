@@ -105,7 +105,7 @@ function AppContent(){
                 
 
                 <div className="icons">
-                    <div onClick={()=>{
+                    <div className="dollar" onClick={()=>{
                         let elemID= carpark.Agency+carpark.CarParkID;
                         let avail = document.querySelector(`#${elemID}>div>#available_lots`);
                         if (avail.style.display ==="none"){
@@ -119,7 +119,7 @@ function AppContent(){
                             cost.style.display ="none"
                         }
 
-                    }}>$</div><div><AddFav setFavoriteCarpark={setFavoriteCarpark} carpark={carpark} favoriteCarpark={favoriteCarpark}/></div>
+                    }}>💲</div><div><AddFav setFavoriteCarpark={setFavoriteCarpark} carpark={carpark} favoriteCarpark={favoriteCarpark}/></div>
                 </div>
 
                 
@@ -129,7 +129,7 @@ function AppContent(){
                     </h2>
                     <h4>{carpark.Agency}</h4>
                     <h3 id="available_lots">
-                        {carpark.AvailableLots} , {carpark.CarParkID}
+                        Available Lots: {carpark.AvailableLots}
                     </h3>
 
                     <div id="rates" style={{display:"none"}}>

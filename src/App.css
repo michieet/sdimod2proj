@@ -6,10 +6,11 @@
 }
 
 .card{
-  border: 3px solid black;
-  padding: 10px;
+  padding: 30px 25px 10px 25px;
   border-radius: 10px;
   position:relative;
+  -webkit-box-shadow: 5px 5px 15px 5px #858585; 
+  box-shadow: 5px 5px 15px 5px #858585;
 }
 
 .icons{
@@ -19,7 +20,9 @@
   box-sizing: border-box;
   width:50px;
   position: absolute;
-  right:0;
+  top: 0px;
+  right: 15px;
+  cursor: pointer;
 }
 
 nav{
@@ -27,3 +30,13 @@ nav{
   right:0;
 }
 
+.heart{
+  cursor: pointer;
+  font-size: 40px;
+}
+
+.dollar{
+  padding-top: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
