@@ -17,10 +17,11 @@ function App() {
     
       <div className="App">
       <nav className="App-nav">
-            <div>
+            <div className="navlinks">
               <Link to="/favorites">Favourites</Link>
             </div>
-            <div>
+            <div>   |   </div>
+            <div className="navlinks">
               <Link to="/nearest">Nearest</Link>
             </div>
         </nav>

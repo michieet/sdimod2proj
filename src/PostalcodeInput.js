@@ -64,7 +64,7 @@ function PostalcodeInput(props) {
     <div className="postalcode-input">
       <div className="form-section">
         <form>
-          <input
+          <input className="inputField"
             type="text"
             placeholder="Enter Your Location"
             name="postal-code"
@@ -72,7 +72,7 @@ function PostalcodeInput(props) {
             value={postalCode}
           ></input>
           
-          <button onClick={handleSubmit}>Submit</button>
+          <button className="myButton" onClick={handleSubmit}>Submit</button>
         </form>
       </div>
     </div>
