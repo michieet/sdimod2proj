@@ -44,6 +44,11 @@ body {
     gap: 15px;
     margin: 15px;
   }
+
+  .centerOfGrid{
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
 }
 
 
@@ -52,6 +57,11 @@ body {
     grid-template-columns: 1fr;
     gap: 15px;
     margin: 15px;
+  }
+
+  .centerOfGrid{
+    grid-column-start: 1;
+    grid-column-end: 2;
   }
 }
 
