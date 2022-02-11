@@ -1,1 +1,63 @@
-<mxfile host="app.diagrams.net" modified="2022-02-11T02:41:39.338Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36" version="16.4.11" etag="tuMVgRZCtpnokN1gYwZO" type="github"><diagram id="0TYubsbcnKdZuzJ9Is37">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-02-11T03:04:04.664Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36" etag="z1k-79gtcBFh_eLMYB1J" version="16.4.11" type="github">
+  <diagram id="0TYubsbcnKdZuzJ9Is37" name="Page-1">
+    <mxGraphModel dx="780" dy="1105" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-1" value="&lt;h1&gt;Lesson 3.2 UML Diagram&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="20" width="310" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-2" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="70" y="260" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-5" value="Search for carpark" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="170" y="140" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-6" value="List Favourite Carparks" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="170" y="380" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-13" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="M5tBJFbukFyBzNnrsfe0-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="100" y="280" as="sourcePoint" />
+            <mxPoint x="150" y="230" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="120" y="280" />
+              <mxPoint x="120" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-15" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="M5tBJFbukFyBzNnrsfe0-2" target="M5tBJFbukFyBzNnrsfe0-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="100" y="300" as="sourcePoint" />
+            <mxPoint x="120" y="380" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="120" y="320" />
+              <mxPoint x="120" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-20" value="&quot;carpark&quot; is the entity" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="110" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-21" value="&quot;Search&quot; is the verb/ user action" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="190" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-23" value="Save Favourite Carparks" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="170" y="530" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-24" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="80" y="360" as="sourcePoint" />
+            <mxPoint x="160" y="560" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="80" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M5tBJFbukFyBzNnrsfe0-25" value="Every Interaction can constitute to 1 or 2 use case" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="55" y="70" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
