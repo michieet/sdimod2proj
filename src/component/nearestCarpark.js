@@ -1,13 +1,17 @@
 import {getDistance} from "geolib";
+const {svy21ToWgs84} =require ("../../node_modules/svy21/index.js");
 
 function getNearestCarparks(userLoc, carparksLoc, setNearestCarpark){
     
     function checkCurr(){
-        console.log("checking loc..")
+        console.log("checking loc..");
+        console.log(userLoc);
         if (userLoc.latitude> 1.48 || userLoc.latitude <1.15){
+            setNearestCarpark("OOB");
             return false;
         };
         if (userLoc.longitude> 104.06 || userLoc.longitude <103.59){
+            setNearestCarpark("OOB");
             return false;
         };
         console.log("Location within boundaries");
@@ -32,8 +36,8 @@ function getNearestCarparks(userLoc, carparksLoc, setNearestCarpark){
      function isCarparkWithinDistance(carpark){
 
         let carpark_loc = {
-            latitude:carpark.latitude,
-            longitude:carpark.longitude,
+            latitude:svy21ToWgs84(parseFloat(carpark.y_coord), parseFloat(carpark.x_coord))[0],
+            longitude:svy21ToWgs84(parseFloat(carpark.y_coord), parseFloat(carpark.x_coord))[1],
         };
 
         let user_loc = {
@@ -48,7 +52,7 @@ function getNearestCarparks(userLoc, carparksLoc, setNearestCarpark){
      }
 
 
-     if(checkCurr()){
+    if(checkCurr()){ 
         getNearestCarparks();
     }else if (!userLoc){
         setNearestCarpark([]);

@@ -4,7 +4,7 @@ import {useState} from 'react';
 function AddFav (props) {
 
     const {favoriteCarpark, setFavoriteCarpark, carpark} = props;
-    const carparkInFav = favoriteCarpark.find((data) => data.CarParkID === carpark.CarParkID);
+    const carparkInFav = favoriteCarpark.find((data) => data.car_park_no === carpark.car_park_no);
     let iniFav;
     if (carparkInFav){
         iniFav = true;
@@ -27,9 +27,9 @@ function AddFav (props) {
     const deleteFavCarpark = () => {
         setIsFav(!isFav);
         let newList = favoriteCarpark.filter(item => {
-            console.log(item.CarParkID);
-            console.log(carpark.CarParkID);
-            return item.CarParkID !== carpark.CarParkID})
+            console.log(item.car_park_no);
+            console.log(carpark.car_park_no);
+            return item.CarParkID !== carpark.car_park_no})
         setFavoriteCarpark(newList);
         localStorage.setItem("favoriteCarpark", JSON.stringify(newList));
         console.log("favouriteCarpark",favoriteCarpark);
