@@ -1,4 +1,4 @@
-- This app was jointly developed by [michieet](https://github.com/michieet), [janiceyap](https://github.com/janiceyap), [m-chocolate](https://github.com/m-chocolate), [normanhfz](https://github.com/normanhfz) and [QuackZ90](https://github.com/QuackZ90) in a 5 days sprint as part of our module project for NTU / Skills Union software Developer Immersive Program.
+- This app was jointly developed by [michieet](https://github.com/michieet), [janiceyap](https://github.com/janiceyap), [m-chocolate](https://github.com/m-chocolate), [normanhfz](https://github.com/normanhfz) and [quackz90](https://github.com/QuackZ90) in a 5 days sprint as part of our module project for NTU / Skills Union software Developer Immersive Program.
 
 - This app accepts a location input from the user, and returns the parking lot availability data of HDB carparks within 1 km radius of said location.
 - Google map API is used to analyse the input from the user, and it returns the lat and long of lcoation entered.
