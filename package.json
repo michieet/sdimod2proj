@@ -8,6 +8,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.25.0",
+    "dotenv": "^16.0.0",
     "geo-distance": "^0.2.0",
     "geolib": "^3.3.3",
     "gh-pages": "^3.2.3",
