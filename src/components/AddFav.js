@@ -29,7 +29,7 @@ function AddFav (props) {
         let newList = favoriteCarpark.filter(item => {
             console.log(item.car_park_no);
             console.log(carpark.car_park_no);
-            return item.CarParkID !== carpark.car_park_no})
+            return item.car_park_no !== carpark.car_park_no})
         setFavoriteCarpark(newList);
         localStorage.setItem("favoriteCarpark", JSON.stringify(newList));
         console.log("favouriteCarpark",favoriteCarpark);
