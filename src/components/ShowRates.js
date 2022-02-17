@@ -15,39 +15,40 @@ function ShowRates (props){
     //console.log(props.carparkInfo.Agency.toUpperCase());
     //console.log(props.carparkInfo.CarParkID);
 
-    switch(props.carparkInfo.Agency.toUpperCase()){
-        case "LTA":
-            (async () => {
-                parkRateInfo = await LTAParkRate(props.carparkInfo.CarParkID);
+    // switch("HDB"){ 
+    //     // props.carparkInfo.Agency.toUpperCase()||
+    //     case "LTA":
+    //         (async () => {
+    //             parkRateInfo = await LTAParkRate(props.carparkInfo.CarParkID);
+    //             //console.log("parkRateInfo", parkRateInfo);
+    //             if( !(_.isEqual(parkRateData,parkRateInfo))){
+    //                 setParkRateData(parkRateInfo);
+    //             };
+    //         })();
+    //         break;
+    //     case "URA":
+    //         (async () => {
+    //             parkRateInfo = await URAParkRate(props.carparkInfo.CarParkID);
+    //             //console.log("parkRateInfo", parkRateInfo);
+    //             if( !(_.isEqual(parkRateData,parkRateInfo))){
+    //                 setParkRateData(parkRateInfo);
+    //             };
+    //         })();
+    //         break;
+    //     case "HDB":
+            // (async () => {
+                parkRateInfo = HDBParkRate(props.carparkInfo);
                 //console.log("parkRateInfo", parkRateInfo);
                 if( !(_.isEqual(parkRateData,parkRateInfo))){
-                    setParkRateData(parkRateInfo);
-                };
-            })();
-            break;
-        case "URA":
-            (async () => {
-                parkRateInfo = await URAParkRate(props.carparkInfo.CarParkID);
-                //console.log("parkRateInfo", parkRateInfo);
-                if( !(_.isEqual(parkRateData,parkRateInfo))){
-                    setParkRateData(parkRateInfo);
-                };
-            })();
-            break;
-        case "HDB":
-            (async () => {
-                parkRateInfo = await HDBParkRate(props.carparkInfo.CarParkID);
-                //console.log("parkRateInfo", parkRateInfo);
-                if( !(_.isEqual(parkRateData,parkRateInfo))){
-                    setParkRateData(parkRateInfo);
-                };
-            })();
-            break;
+                    setParkRateData(parkRateInfo);}
+            //     };
+            // })();
+            // break;
 
-        default:
-            console.log("No relevant source available.");
-            break;
-    }
+    //     default:
+    //         console.log("No relevant source available.");
+    //         break;
+    // }
 
     //console.log("parkRateData", parkRateData);
     return (

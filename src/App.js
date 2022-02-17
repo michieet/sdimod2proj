@@ -18,26 +18,30 @@ function App() {
       <div className="App">
       <nav className="App-nav">
             <div className="navlinks">
-              <NavLink exact={true} activeClassName="isActive" to="/favorites" >Favourites</NavLink>
+              <NavLink exact={true} activeClassName="isActive" to="/sdimod2proj" >Home</NavLink>
             </div>
             <div>   |   </div>
             <div className="navlinks">
-              <NavLink exact={true} activeClassName="isActive" to="/nearest" >Nearest</NavLink>
+              <NavLink exact={true} activeClassName="isActive" to="/sdimod2proj/favorites" >Favourites</NavLink>
+            </div>
+            <div>   |   </div>
+            <div className="navlinks">
+              <NavLink exact={true} activeClassName="isActive" to="/sdimod2proj/nearest" >Nearest</NavLink>
             </div>
         </nav>
         <h1><img className="carlogo" src={favicon}/>Where Can Park</h1>
 
           <div className="App-content">
             <Switch>
-            <Redirect from="/sdimod2proj" to="/" />
-            <Route exact path="/">
-                <div>Your favourite parking app.</div>
-              </Route>
-              <Route path="/:id">
-                <ErrorBoundary>
-                  <AppContent />
-                </ErrorBoundary>
-              </Route>
+
+             <Route path="/sdimod2proj/:id">
+               <ErrorBoundary>
+                 <AppContent />
+               </ErrorBoundary>
+             </Route>
+             <Route path="/sdimod2proj" >
+              <div>Your favourite parking app.</div>
+            </Route>
               
 
             </Switch>
