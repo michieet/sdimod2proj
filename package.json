@@ -2,7 +2,7 @@
   "name": "sdimod2proj",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://michieet.github.io/sdimod2proj",
+  "homepage": "https://QuackZ90.github.io/sdimod2proj",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
