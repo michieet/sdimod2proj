@@ -1,83 +1,15 @@
-# Getting Started with Create React App
+- This app was jointly developed by [michieet](https://github.com/michieet), [janiceyap](https://github.com/janiceyap), [m-chocolate](https://github.com/m-chocolate), [normanhfz](https://github.com/normanhfz) and [QuackZ90](https://github.com/QuackZ90) in a 5 days sprint as part of our module project for NTU / Skills Union software Developer Immersive Program.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- This app accepts a location input from the user, and returns the parking lot availability data of HDB carparks within 1 km radius of said location.
+- Google map API is used to analyse the input from the user, and it returns the lat and long of lcoation entered.
+- HDB parking lot availability and information data is provided by [data.gov.sg](https://data.gov.sg/dataset/carpark-availability) and [HDB](https://data.gov.sg/dataset/hdb-carpark-information) accordingly.
+- To ensure up to date data, parking lot availability data is retrieved every 5 seconds, while the information data is retrieved once whenever the app starts.
 
 
-### Extra Notes from Janice
-
-LTAdb - initiate to port 3301
-HDBdb - initiate to port 3302
-URAdb - initiate to port 3303
-
-Command to use:
-npx json-server json-server/availabilitydata.json --port 3300
-npx json-server ratesdb/ltadb.json --port 3301
-npx json-server ratesdb/hdbdb.json --port 3302
-npx json-server ratesdb/uradb.json --port 3303
+Tools / packagesused for this project:
+- React.js
+- [React router dom](https://www.npmjs.com/package/react-router-dom)
+- [Axios](https://www.npmjs.com/package/axios)
+- [lodash](https://www.npmjs.com/package/lodash)
+- [geolib](https://www.npmjs.com/package/geolib)
+- [svy21](https://www.npmjs.com/package/svy21)
