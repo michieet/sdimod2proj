@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const availableAPI = axios.create({
-    baseURL:'http://localhost:3300',
+    baseURL:'https://api.data.gov.sg/v1/transport',
 });
 
 export default availableAPI;

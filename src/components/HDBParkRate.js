@@ -29,7 +29,7 @@ function IsInCentralHDB(CarParkID){
     return centralArea;
 }
 
-async function HDBParkRate(CarParkID){
+function HDBParkRate(carpark){
     let HDBRateData;
     
     const centralAreaParkRate = [
@@ -60,36 +60,35 @@ async function HDBParkRate(CarParkID){
             "parkRate" : "No Parking"
     };
 
-    const { status, data } = await HDBAPI.get(`/Result?car_park_no=${CarParkID}`);
-    if ( status === 200 ) {
+    // const { status, data } = await HDBAPI.get(`/Result?car_park_no=${CarParkID}`);
+    // if ( status === 200 ) {
     
-        console.log(data);
+    //     console.log(data);
 
         // Check if carpark is in central area.
-        if (IsInCentralHDB(CarParkID)){
-            HDBRateData = centralAreaParkRate;
-        } else {
-            HDBRateData = regularDayParkRate;
-        }
+    if (IsInCentralHDB(carpark.carpark_info)){
+        HDBRateData = centralAreaParkRate;
+    } else {
+        HDBRateData = regularDayParkRate;
+    }
 
-        // Check if carpark has night parking.
-        //console.log(data[0].night_parking);
-        if (data[0].night_parking === "YES"){
-            HDBRateData.push(nightParkRate);
-        } else {
-            HDBRateData.push(noNightPark);
-        }
+    // Check if carpark has night parking.
+    //console.log(data[0].night_parking);
+    if (carpark.night_parking === "YES"){
+        HDBRateData.push(nightParkRate);
+    } else {
+        HDBRateData.push(noNightPark);
+    }
 
-        // Check & populate the free parking details.
-        //console.log(data[0].free_parking);
-        if (!(data[0].free_parking === "NO")){
-            const freeParkDetails = {
-                    "timeslot" : data[0].free_parking,
-                    "parkRate" : "Free Parking"
-            };
+    // Check & populate the free parking details.
+    //console.log(data[0].free_parking);
+    if (!(carpark.free_parking === "NO")){
+        const freeParkDetails = {
+                "timeslot" : carpark.free_parking,
+                "parkRate" : "Free Parking"
+        };
 
-            HDBRateData.push(freeParkDetails);
-        }
+        HDBRateData.push(freeParkDetails);
     }
 
  
