@@ -9,15 +9,17 @@ import ColorIcon from '../components/colorIcon';
 import availableAPI from '../components/availableAPI';
 import AddFav from '../components/AddFav';
 import Spinner from "../assets/Spinner.svg";
+import locationAPI from  '../components/locationAPI';
 
 function AppContent(){
 
     const {id} = useParams();
     //const {nearestCarpark, favoriteCarpark, setUserLoc} = props;
-    let [userInput, setUserInput] = useState({latitude:"", longitude:""});
+    //let [userInput, setUserInput] = useState({latitude:"", longitude:""});
 
     let [userLoc, setUserLoc] = useState({latitude:"", longitude:"" });
     let [carparksLoc, setCarparksLoc] = useState([]);
+    let [carparksAvail, setCarparksAvail]=useState([]);
     let [nearestCarpark, setNearestCarpark] = useState([]);
     let [favoriteCarpark, setFavoriteCarpark] = useState(() => {
         const saved = localStorage.getItem("favoriteCarpark");
@@ -26,49 +28,101 @@ function AppContent(){
       });
   
   
-    function retrieveCarparkData (){
+    function retrieveCarparkAvailData(){
       console.log("Getting data...");
   
-      let carparksData;
+      let carparksAvailData;
   
     //   data = mockedData.value;
 
-    availableAPI.get("/value?LotType=C").then(
-        res=>{
-            if (res.status===200){
-                console.log("Data received");
-                carparksData = res.data;
-                //console.log(carparksData);
-                // data = data.filter(carpark=>carpark.LotType==="C");
-                setCarparksLocData(carparksData);
+        availableAPI.get("/carpark-availability").then(
+            res=>{
+                if (res.status===200){
+                    console.log(res.data);
+                    console.log(`Data received. timestamp:${res.data.items[0].timestamp}`);
+                    carparksAvailData = res.data.items[0].carpark_data;
+                    console.log(carparksAvailData);
+                    // data = data.filter(carpark=>carpark.LotType==="C");
+                    setCarparksAvail(carparksAvailData);
+                }
             }
-        }
-    ).catch(err=>{
-        console.log(err.message);
-        // carparksData = mockedData.value;
-        // carparksData = carparksData.filter(carpark=>carpark.LotType==="C");
-        // setCarparksLocData(carparksData);
-    })
+        ).catch(err=>{
+            console.log(err.message);
+            // carparksData = mockedData.value;
+            // carparksData = carparksData.filter(carpark=>carpark.LotType==="C");
+            // setCarparksLocData(carparksData);
+        })
+
+    }
+
+
+    function retrieveCarparkLocateData(){
+        let offset=0;
+        let location_data=[];
+        let num_loc;
+        
+        console.log("test");
+
+        locationAPI.get("/datastore_search", {params:{offset: offset, resource_id:"139a3035-e624-4f56-b63f-89ae28d4ae4c"}}, {timeout:2000}).then(
+            res=>{
+                if(res.status===200){
+                    num_loc = res.data.result.total;
+                    console.log(num_loc);
+
+                    for (offset=0;offset<num_loc;offset+=100){
+                        locationAPI.get("/datastore_search", {params:{offset: offset, resource_id:"139a3035-e624-4f56-b63f-89ae28d4ae4c"}}, {timeout:2000}).then(
+                            res=>{
+                                if(res.status===200){
+                                    // console.log(`Offset ${res.data.result.offset} received.`);
+                                    if(offset===0){
+                                        num_loc = res.data.result.total;
+                                    }
+                                    
+                                    location_data.push(...res.data.result.records);
+                                    setCarparksLoc(location_data);
+                                    console.log(location_data);
+                                }
+                
+                            }).catch(err=>{
+                                console.log(err);      
+                            })}
+
+                }
+
+            }).catch(err=>{
+                console.log(err);      
+            });
+
+        ;
 
         
+        
+
+
     }
   
-    function setCarparksLocData(data){
+    // function setCarparksLocData(data){
   
-      data.forEach(carpark=>{
-      carpark["latitude"] = carpark.Location.split(' ')[0];
-      carpark["longitude"] = carpark.Location.split(' ')[1];
-      })
+    //   data.forEach(carpark=>{
+    //   carpark["latitude"] = carpark.Location.split(' ')[0];
+    //   carpark["longitude"] = carpark.Location.split(' ')[1];
+    //   })
   
-      setCarparksLoc(data);
-     }
+    //   setCarparksLoc(data);
+    //  }
+
+
+     useEffect(()=>{
+         retrieveCarparkLocateData();
+     },[])
   
   
      useEffect(()=>{
 
-        if((id==="nearest" && userLoc.latitude && userLoc.longitude)||(id==="favorites")){
+        if((id==="nearest")||(id==="favorites")){  
+            // && userLoc.latitude && userLoc.longitude
 
-            let update = setInterval(retrieveCarparkData,5000);
+            let update = setInterval(retrieveCarparkAvailData,5000);
         
         return(
             ()=>{clearInterval(update)}
@@ -124,15 +178,17 @@ function AppContent(){
 
     function DisplayCarpark(carpark){
 
-        //let [showPrice, setShowPrice] = useState(false);
+        const nearbyCarpark = carparksAvail.find((carparkAvail)=>{
+            return (carparkAvail.carpark_number === carpark.car_park_no && carparkAvail.carpark_info[0].lot_type==="C")
+        })
 
         return(
-            <div key={carpark.Agency+carpark.CarParkID} className="card" id={carpark.Agency+carpark.CarParkID}>
+            <div key={carpark.car_park_no} className="card" id={carpark.car_park_no}>
                 
 
                 <div className="icons">
                     <div className="dollar" onClick={()=>{
-                        let elemID= carpark.Agency+carpark.CarParkID;
+                        let elemID= carpark.car_park_no;
                         let avail = document.querySelector(`#${elemID}>div>#available_lots`);
                         if (avail.style.display ==="none"){
                             avail.style.display = "block";
@@ -151,11 +207,14 @@ function AppContent(){
                 
                 <div>                
                     <h2>
-                        {carpark.Development} <ColorIcon carpark={carpark} />
+                        {carpark.address} <ColorIcon carpark={carpark} />
                     </h2>
-                    <h4>{carpark.Agency}</h4>
+                    {/* <h4>{carpark.Agency}</h4> */}
                     <h3 id="available_lots">
-                        Available Lots: {carpark.AvailableLots}
+                        Total Lots: {nearbyCarpark? nearbyCarpark.carpark_info[0].total_lots:"-"} <br></br>
+                        Available Lots: {nearbyCarpark? nearbyCarpark.carpark_info[0].lots_available:"-"} <br></br>
+                        Updated at: {nearbyCarpark? nearbyCarpark.update_datetime:"-"}
+
                     </h3>
 
                     <div id="rates" style={{display:"none"}}>
@@ -187,11 +246,13 @@ function AppContent(){
             console.log(nearestCarpark);
             if (!userLoc.longitude || !userLoc.latitude){
                 carparkList = <div className="centerOfGrid">Please enter your current location</div>
-            }else if (nearestCarpark.length == 0){
+            }else if (nearestCarpark.length === 0){
                 carparkList = <div className="centerOfGrid"><img src={Spinner} />.</div>
             }
             else if (nearestCarpark===false){
                 carparkList = <div className="centerOfGrid">No carpark found within 1km</div>;
+            } else if(nearestCarpark==="OOB"){
+                carparkList = <div className="centerOfGrid">Response lat:{userLoc.latitude}, long: {userLoc.longitude} is out of bound. Please refine your search</div>;
             }
             else{
                 nearestCarpark.sort((a,b)=>-(a.AvailableLots - b.AvailableLots));

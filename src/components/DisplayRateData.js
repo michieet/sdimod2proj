@@ -1,6 +1,4 @@
 function DisplayRateData (props){
-
-    console.log("rateData", props.rateData);
   
     return (
         <>

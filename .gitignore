@@ -23,3 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 src/components/colorIcon.js
 src/App.js
+
+# config
+public/config.js
+
+.env

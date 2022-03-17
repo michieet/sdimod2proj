@@ -1,6 +1,9 @@
 import axios from "axios";
 import {useState} from "react";
 
+const apiKey=process.env.REACT_APP_GOOGLE_API_KEY;
+
+
 function PostalcodeInput(props) {
 
   const{setUserLoc} = props;  
@@ -25,7 +28,7 @@ function PostalcodeInput(props) {
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
       params:{
         address:location,
-        key:'AIzaSyDJhmmjCCsw1qzIT6hQ7M6YSnOx3ZvRpU8'
+        key: apiKey
       }
     })
     .then(function(response){
